@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Caution: 
+  1. You must set the main_browser to machine with ip localhost;
+  2. Setting the ff instead of firefox browser
+  3. You can set the ie browser with version, as ie6, ie7, ie8, ie9. (The webdriver will start the default ie in target machine)
+-->
+<browser_sync sync_port="9998">
+    <machine ip="localhost" username="administrator" password="xxxx">
+        <main_browser>ff</main_browser>
+		<browser>ie</browser>
+		<browser>chrome</browser>
+	</machine>
+	<!--machine ip="x.x.x.x" username="administrator" password="xxxx">
+		<browser>chrome</browser>
+	</machine>
+	<machine ip="x.x.x.x" username="administrator" password="xxxx">
+		<browser>safari</browser>
+	</machine-->	
+</browser_sync>

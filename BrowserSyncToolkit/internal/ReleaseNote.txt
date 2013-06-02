@@ -1,0 +1,44 @@
+Release Note: 1.2.2
+1. selenium 版本升级至2.29.0
+
+Release Note: 1.2.1
+1. 修复获取firefox安装路径在XP下无法获取的问题（由1.2.0引入）
+
+Release Note: 1.2.0
+1. 对整体目录结构做调整
+2. 优化用户体验：提示更友好、部署更方便、操作更简单
+3. 注入脚本升级至2.3
+4. 剥离server模块至automanx-webui，独立维护
+
+Release Note: 1.1.3
+1. 修复BrowserSync Console无法通过的bug （由1.1.1修改引起）
+2. 调整injecter脚本版本为2.2
+
+Release Note: 1.1.2
+1. 修复localhost和远程机器无法同时启动的bug （安如 反馈的问题）
+
+Release Note: 1.1.1
+1. 发布browser_sync_injecter.user.js 2.2版本
+删除错误弹框
+2. 支持淘宝登录的帐户名输入框的同步
+
+Release Note: 1.1.0
+1. 发布browser_sync_injecter.user.js2.1版本
+优化文本框输入的同步，调整了触发同步的逻辑：
+老的方式 - 在文本框中输入一个字符后，keyup，即发送同步请求至后端进行同步；
+新的方式 - 在文本框中输入N个字符后，点击TAB按键，发送同步请求至后端进行同步。
+文本框中，输入完毕后，点击回车键进行同步的行为没有改变
+2. 删除不必要的文件
+
+Release Note: 1.0.2
+1. 去除mvn依赖残留问题，不再依赖mvn
+2. 当browsersync server 的jar包不存在，将直接退出
+3. 对Element调用exist方法时做try-catch （BrowserSync Server修复）
+4. 当java.exe不存在时， 不进行杀进程操作
+
+Release Note: 1.0.1 
+1. remove the maven dependency  (start_up)
+2. if the java_home is empty, exit the process (start_up)
+3. fix bug about the "net use for target machine" should be moved to front(deploy)
+4. add the release note
+
