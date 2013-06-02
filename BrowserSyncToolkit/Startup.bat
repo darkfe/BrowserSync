@@ -1,7 +1,7 @@
 @echo off
-title "BrowserSync Injection Server"
+title "BrowserSync Secondary Servers"
 echo *************************************************************
-echo ****Startup the BrowserSync Injection Server!****
+echo ****Startup the BrowserSync Secondary Servers!****
 echo *************************************************************
 call tasklist | findstr node.exe
 if "%errorlevel%"=="0" (

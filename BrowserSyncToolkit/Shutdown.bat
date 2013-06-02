@@ -5,7 +5,7 @@ echo ****Shutdown the BrowserSync Injection Server!****
 echo *************************************************************
 echo Reset the proxy of internet setting.
 ::regedit /S internal\proxy\remove.reg
-call internal\node.exe -e "require('./internal/proxy/proxy').shutdown()"
+call internal\node.exe -e "require('./internal/bs_proxy_server/proxy').shutdown()"
 
 ::echo :TODO call the proxy setting effect immediately
 

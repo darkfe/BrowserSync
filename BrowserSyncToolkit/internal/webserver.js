@@ -90,8 +90,8 @@ var setupWebServer = function(ip, port) {
         console.error('Please check the port:' + port + ' whether being used .');
     });
     console.log("Web server running at\n  => http://" + ip + ":" + port + "/");
-    console.log("\tStatic file server running at\n  => http://" + ip + ":" + port + "/");
-    console.log("\tAPI server running at\n  => http://" + ip + ":" + port + "/services/\n");
+    console.log("\tStatic file server running at\n\t\t=> http://" + ip + ":" + port + "/");
+    console.log("\tAPI server running at\n\t\t=> http://" + ip + ":" + port + "/services/\n");
     return server;
 }
 

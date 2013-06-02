@@ -1,6 +1,6 @@
 // include the loadfile.js
 var Fs = new ActiveXObject("Scripting.FileSystemObject");
-var Lib = eval(Fs.OpenTextFile("../internal/loadfile.js", 1).ReadAll());
+var Lib = eval(Fs.OpenTextFile("../internal/bs_web_server/public/javascripts/loadfile.js", 1).ReadAll());
 
 // Load the xml config
 Lib.loadXml('../_browser_sync_config.xml');
