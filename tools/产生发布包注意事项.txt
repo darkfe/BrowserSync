@@ -1,0 +1,6 @@
+注，安装包的最后点后面的数字表示svn上的revision
+1.每次发布新的版本，在BrowserSyncToolKit\ReleaseNote.txt中对修改点做记录
+2.修改make_browsersync_toolkit_install.bat内的main_version为新的版本号
+3.执行make_browsersync_toolkit_install.bat生成安装包
+4.完成安装包生成后，把新的安装包拷贝至下载目录
+5.如有必要，更新 http://yunpan.alibaba-inc.com/ED1c47t7j (我的团队协作区\浏览器同步工具组\【勿删除】外部访问\BrowserSync_in_AutoManX_Manual.docx, 需要改动，联系乐东)
