@@ -10,9 +10,9 @@ if (browser_sync_config_xml == null || browser_sync_config_xml == '') {
 }
 initDocum(browser_sync_config_xml);
 
-var server = server_ip;   // defined in index.js
+var server = server_ip + ":" + server_port;   // defined in _config.tmp.js, maintained in index.js
 var browserType = getOs(); // defined in loadfile.js
-var report_window_on_error_url = "http://" + server + ":8080/services/report_window_on_error.do";
+var report_window_on_error_url = "http://" + server + "/services/report_window_on_error.do";
 var sent_msg;
 var sent_url;
 var sent_line;
@@ -20,8 +20,8 @@ function report_error(sMsg,sUrl,sLine){
    // if(sent_msg == sMsg && sent_url == sUrl && sent_line == sLine) {
         // skip the duplicate
    // }else{
-
         var data = new Object();
+        data.reporttype = "1";
         data.useragent = navigator.userAgent;
         data.url = sUrl;
         data.msg = sMsg;

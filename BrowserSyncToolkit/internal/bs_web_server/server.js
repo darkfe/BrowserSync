@@ -7,7 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , services = require("./routes/services");
 
 var app = express();
 
@@ -29,6 +30,9 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/services/report_response_error.do', services.report_error);
+app.get('/services/report_window_on_error.do', services.report_error);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   var ip = process.env.WEBSERVER_HOST;

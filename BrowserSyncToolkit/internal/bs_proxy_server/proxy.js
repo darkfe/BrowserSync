@@ -358,6 +358,7 @@ var setupProxyServer = function (ip, port, inject_scripts_src) {
            if (proxy_response.statusCode >= 400) {
                 try {
                     var data = new Object();
+                    data.reporttype = "2";
                     data.useragent = request.headers['user-agent'];
                     data.url = request.url;
                     data.statuscode = proxy_response.statusCode;

@@ -1,5 +1,8 @@
 <SCRIPT src="http://code.jquery.com/jquery-1.9.1.min.js"></SCRIPT>
+<SCRIPT src="http://localhost:8080/javascripts/_config.tmp.js"></SCRIPT>
+
 <SCRIPT>
+    var server = server_ip + ":" + server_port;   // defined in _config.tmp.js, maintained in index.js
     window.onerror = postit;
     function fireerror(){
         alrrr(111);
@@ -12,13 +15,13 @@
         if(sent_msg == sMsg && sent_url == sUrl && sent_line == sLine) {
             // skip the duplicate
         }else{
-            var data = '{msg:"' + sMsg + '",url:"' + sUrl + '",line:"' + sLine + '"}';
+            var data = '{reporttype:"1",msg:"' + sMsg + '",url:"' + sUrl + '",line:"' + sLine + '"}';
             data = encodeURIComponent(data);
             console.log(data);
             $.ajax({
                 type : "get",
                 async:false,
-                url : "http://10.7.245.90:8080/services/report_window_on_error_url.do",
+                url : "http://" + server + "/services/report_window_on_error.do",
                 data: "report=" + data,
                 dataType : "jsonp",
                 jsonp: "callbackparam",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
@@ -39,3 +42,4 @@
     }
 </SCRIPT>
 <input type="button" value="fire_js_error" onclick="fireerror()"/>
+<a href="http://www.1234xxxx.com/?epl=DtbJsl0-xgG7TQ-hwZJATk7Q-5IgoXCK5C7-l2d92cJ9wYoHI9XBE4hPGKD48XXVIDH6YkPfhDMzeZTdduoWUY0hnZwDCwS00FBEmyVzAwkJQRFispAjOlYuHfzWZTiUzbpHNA1AE1MPTcSmniIoYwBopCc9TdNQDXUAIFDe578AAOB_BQAAQIDbCAAAJ-h9SVlTJllBMTZoWkJ6AAAA8A">fire http error 400</a>

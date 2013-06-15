@@ -6,30 +6,36 @@ var js_path =  webserver_path  + 'public/javascripts/';
 var tmp_config = js_path + tmp_config_name;
 // define the name of the config xml variable to be used
 var name_var_config_xml = "browser_sync_config_xml";
-// define the name of the server ip variable to be used
+// define the name of the server ip and port variables to be used
 var name_var_server_ip = "server_ip";
-var preprocess_local_config = function (server_ip) {
+var name_var_server_port = "server_port";
+var preprocess_local_config = function (server_ip, server_port) {
 // solve the problem: 'read local file' in browser via javascript
     var fs = require('fs');
     fs.readFile(orig_config_xml, function (err, data) {
         if (err) throw err;
         var config_xml = data.toString('binary').replace(/\r\n/g, "").replace(/\s+</g, "<").replace(/.+<\?xml/,"<?xml");
-        fs.writeFileSync(tmp_config, 'var ' + name_var_config_xml + '=\'' + config_xml + '\';var ' + name_var_server_ip + '=\'' + server_ip + '\';' );
+        fs.writeFileSync(tmp_config,
+            'var ' + name_var_config_xml + '=\'' + config_xml + '\';' +
+            'var ' + name_var_server_ip + '=\'' + server_ip + '\';' +
+            'var ' + name_var_server_port +  '=\'' + server_port + '\';'
+        );
         //console.log("The configuration from " + orig_config_xml + " has been translated to " + tmp_config + ".");
     });
 }
 
 process.env.WEBSERVER_HOST = "localhost";
+process.env.WEBSERVER_PORT = "8080";
 require('dns').lookup(require('os').hostname(), function(err, addr, fam){
     process.env.WEBSERVER_HOST = addr ;
-    preprocess_local_config(process.env.WEBSERVER_HOST);
+    preprocess_local_config(process.env.WEBSERVER_HOST, process.env.WEBSERVER_PORT);
     startservers();
 });
 
 var startservers = function(){
-    // start the web server for static resource
+    // start the web server for static resource and services
     var webserver_host = process.env.WEBSERVER_HOST;
-    var webserver_port = "8080";
+    var webserver_port = process.env.WEBSERVER_PORT;
     process.env.WEBSERVER_PORT = webserver_port;
     require(webserver_path + 'server');
 
